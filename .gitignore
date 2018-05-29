@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+build/
+*.iws
+out/
+.gradle
+.idea/
+
+
+# User-specific stuff
+.idea/**/tasks.xml
+.idea/**/dictionaries
+.idea/**/shelf
+
+# Sensitive or high-churn files
+.idea/**/sqlDataSources.xml
+
+# Gradle
+build.gradle
+settings.gradle
+
+
