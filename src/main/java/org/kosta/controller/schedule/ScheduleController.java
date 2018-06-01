@@ -1,3 +1,4 @@
+/*
 package org.kosta.controller.schedule;
 
 import org.kosta.controller.airport.AirportController;
@@ -40,3 +41,4 @@ public class ScheduleController {
     }
 
 }
+*/

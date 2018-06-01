@@ -1,16 +1,21 @@
+
 package org.kosta.service.schedule;
 
 import org.kosta.domain.schedule.ScheduleVO;
+import org.kosta.etc.TransDate;
 import org.kosta.persistence.schedule.ScheduleDAO;
 import org.kosta.service.airport.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
 public class ScheduleServiceImpl implements ScheduleService {
+    private static final TransDate transDate = new TransDate();
 
     private final ScheduleDAO scheduleDAO;
 
@@ -22,197 +27,36 @@ public class ScheduleServiceImpl implements ScheduleService {
         this.airportService = airportService;
     }
 
-
     @Override
-    public List<ScheduleVO> set0(ScheduleVO vo, String dep, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route0(dep, arv);
-
-        vo.setDep(airportService.route0(dep, arv).get(0));
-        vo.setArv(airportService.route0(dep, arv).get(1));
-
-        result.add(vo);
-
-        return result;
+    public List<List<ScheduleVO>> randomSch(List<String> result, String DepDay, String ArvDay) throws Exception {
+         List<List<ScheduleVO>> randomsch = new ArrayList<>();
+        List<String> listDay = transDate.gapDate(DepDay,ArvDay);
+        ScheduleVO vo = new ScheduleVO();
+        for (int i = 0; i <result.size()-1; i++) {
+            vo.setDep(result.get(i));
+            vo.setArv(result.get(i+1));
+            if(i==0){
+                vo.setDepDay(listDay.get(0));
+            }else if(i==result.size()-2){
+                vo.setArvDay(listDay.get(listDay.size()-1));
+                randomsch.add(scheduleDAO.selectArvday(vo));
+                break;
+            }else{
+                vo.setDepDay(listDay.get(i*((listDay.size()/(result.size()-2)))));
+            }
+            randomsch.add(scheduleDAO.selectDepday(vo));
+        }
+        return randomsch;
     }
 
     @Override
-    public List<ScheduleVO> set1(ScheduleVO vo, String dep, String s1, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route1(dep, arv, s1);
-
-        vo.setDep(airportService.route1(dep, arv, s1).get(0));
-        vo.setArv(airportService.route1(dep, arv, s1).get(1));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route1(dep, arv, s1).get(1));
-        vo.setArv(airportService.route1(dep, arv, s1).get(2));
-
-        result.add(vo);
-
-        return result;
+    public List<ScheduleVO> selectReRouteService(HashMap<String,Object> param) throws Exception {
+        return scheduleDAO.selectReRoute(param);
     }
 
     @Override
-    public List<ScheduleVO> set2(ScheduleVO vo, String dep, String s1, String s2, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route2(dep, arv, s1, s2);
-
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(0));
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(1));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(1));
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(2));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(2));
-        vo.setDep(airportService.route2(dep, arv, s1, s2).get(3));
-
-        result.add(vo);
-
-        return result;
-    }
-
-    @Override
-    public List<ScheduleVO> set3(ScheduleVO vo, String dep, String s1, String s2, String s3, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route3(dep, arv, s1, s2, s3);
-
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(0));
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(1));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(1));
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(2));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(2));
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(3));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(3));
-        vo.setDep(airportService.route3(dep, arv, s1, s2, s3).get(4));
-
-        result.add(vo);
-
-        return result;
-    }
-
-    @Override
-    public List<ScheduleVO> set4(ScheduleVO vo, String dep, String s1, String s2, String s3, String s4, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route4(dep, arv, s1, s2, s3, s4);
-
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(0));
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(1));
-
-        result.add(vo);
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(1));
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(2));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(2));
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(3));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(3));
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(4));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(4));
-        vo.setDep(airportService.route4(dep, arv, s1, s2, s3, s4).get(5));
-
-        result.add(vo);
-        return result;
-    }
-
-    @Override
-    public List<ScheduleVO> set5(ScheduleVO vo, String dep, String s1, String s2, String s3, String s4, String s5, String arv) throws Exception {
-
-        List<ScheduleVO> result = new ArrayList<>();
-
-        airportService.route5(dep, arv, s1, s2, s3,s4,s5);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(0));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(1));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(1));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(2));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(2));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(3));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(3));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(4));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(4));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(5));
-
-        result.add(vo);
-
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(5));
-        vo.setDep(airportService.route5(dep, arv, s1, s2, s3,s4,s5).get(6));
-
-        result.add(vo);
-
-        return result;
-    }
-
-    @Override
-    public List<ScheduleVO> route0(ScheduleVO vo) throws Exception {
-        return scheduleDAO.readAll(vo);
-    }
-
-    @Override
-    public List<ScheduleVO> route1(ScheduleVO vo) throws Exception {
-        return scheduleDAO.readAll(vo);
-    }
-
-    @Override
-    public List<ScheduleVO> route2(ScheduleVO vo) throws Exception {
-        return scheduleDAO.readAll(vo);
-    }
-
-    @Override
-    public List<ScheduleVO> route3(ScheduleVO vo) throws Exception {
-        return scheduleDAO.readAll(vo);
-    }
-
-    @Override
-    public List<ScheduleVO> route4(ScheduleVO vo) throws Exception {
-        return scheduleDAO.readAll(vo);
-    }
-
-    @Override
-    public List<ScheduleVO> route5(ScheduleVO vo) throws Exception {
-        return null;
+    public List<ScheduleVO> selectReRouteMoreService(HashMap<String, Object> param) throws Exception {
+        return scheduleDAO.selectReRouteMore(param);
     }
 }
+

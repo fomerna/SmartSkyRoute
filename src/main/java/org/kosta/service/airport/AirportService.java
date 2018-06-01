@@ -13,9 +13,10 @@ public interface AirportService {
 
     double readLon(String airportCode) throws Exception;
 
-    int calKm(String a, String b) throws Exception;
+    int calKm(AirportVO a, AirportVO b) throws Exception;
 
-    List<String> route0(String dep, String arv) throws Exception;
+    List<String> route(List<AirportVO> airportList)throws Exception;
+  /*  List<String> route0(String dep, String arv) throws Exception;
 
     List<String> route1(String dep, String arv, String s1) throws Exception;
 
@@ -25,7 +26,7 @@ public interface AirportService {
 
     List<String> route4(String dep, String arv, String s1, String s2, String s3, String s4) throws Exception;
 
-    List<String> route5(String dep, String arv, String s1, String s2, String s3, String s4, String s5) throws Exception;
+    List<String> route5(String dep, String arv, String s1, String s2, String s3, String s4, String s5) throws Exception;*/
 
 
 }

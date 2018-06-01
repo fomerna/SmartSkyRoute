@@ -1,3 +1,4 @@
+/*
 package org.kosta.controller.airport;
 
 import org.kosta.service.airport.AirportService;
@@ -111,3 +112,4 @@ public String route() throws Exception{
     }
 
 }
+*/

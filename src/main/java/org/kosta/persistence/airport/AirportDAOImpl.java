@@ -5,6 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
+import java.util.List;
+
 
 @Repository
 public class AirportDAOImpl implements AirportDAO {
@@ -33,7 +36,10 @@ public class AirportDAOImpl implements AirportDAO {
         return sqlSession.selectOne(namespace + ".readLon", airportCode);
     }
 
-
+    @Override
+    public List<AirportVO> selectAirport2(HashMap<String,Object> param) throws Exception {
+        return sqlSession.selectList(namespace+".selectAirport2",param);
+    }
 
 
 }

@@ -9,8 +9,8 @@ public class MySQLConnectionTest {
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/sky?useSSL=false&serverTimezone=Asia/Seoul";
-    private static final String USER = "fomerna";
-    private static final String PASSWORD = "kosta180";
+    private static final String USER = "geun";
+    private static final String PASSWORD = "geun";
 
     @Test
     public void testConnection() throws Exception {
