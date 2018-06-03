@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Vanilla JavaScript autoComplete</title>
+
+    <link rel="stylesheet" href="auto-complete.css">
+</head>
+<body>
+
+
+<form  class="pure-form" style="margin:30px 0 40px">
+    <input id="advanced-demo" autofocus type="text" name="q"
+           placeholder="Country or language code ..."
+           style="width:100%;max-width:600px;outline:0">
+</form>
+<script src="auto-complete.min.js"></script>
+
+<script>
+
+    var airport = new autoComplete({
+        selector: '#advanced-demo',
+        minChars: 1,
+        source: function (term, suggest) {
+            term = term.toLowerCase();
+            var choices = [['인천', 'ICN'], ['베이징', 'PEK'], ['상하이', 'PVG'], ['도쿄', 'NRT'], ['런던', 'LHR'], ['파리', 'CDG'], ['로마', 'FCO'], ['밀라노', 'MXP'], ['마드리드', 'MAD'], ['바르셀로나', 'BCN']];
+            var suggestions = [];
+
+            for (i = 0; i < choices.length; i++)
+                if (~(choices[i][0] + ' ' + choices[i][1]).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
+            suggest(suggestions);
+        },
+        renderItem: function (item, search) {
+            search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&amp;');
+            var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
+            return '<div class="autocomplete-suggestion" data-langname="' + item[0] + '" data-lang="' + item[1] + '" data-val="' + search + '"> ' + item[0].replace(re, "<b>$1</b>") + '</div>';
+        },
+        onSelect: function (e, term, item) {
+            console.log('Item "' + item.getAttribute('data-langname') + ' (' + item.getAttribute('data-lang') + ')" selected by ' + (e.type == 'keydown' ? 'pressing enter' : 'mouse click') + '.');
+            document.getElementById('advanced-demo').value = item.getAttribute('data-langname') + ' (' + item.getAttribute('data-lang') + ')';
+        }
+    });
+
+
+</script>
+
+
+
+</body>
+</html>

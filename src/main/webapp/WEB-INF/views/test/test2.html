@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+    <!--
+    function add_item() {
+        // pre_set 에 있는 내용을 읽어와서 처리..
+        var div = document.createElement('div');
+        div.innerHTML = document.getElementById('pre_set').innerHTML;
+        document.getElementById('field').appendChild(div);
+    }
+
+    function remove_item(obj) {
+        // obj.parentNode 를 이용하여 삭제
+        document.getElementById('field').removeChild(obj.parentNode);
+    }
+
+    //-->
+</script>
+
+
+<div id="pre_set" style="display:none">
+    <div class="row justify-content-md-center" id="input">
+        <div class="autocomplete2">
+            <label for="dep2"
+                   class="col-form-label">출발지</label>
+            <input class="rounded-left" id="dep2"
+                   type="text"
+                   name="dep" placeholder="도시 또는 공항">
+        </div>
+
+        <div class="array">
+            <br/>
+            <label class="col-form-label">&nbsp;</label>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24" width="25" height="25"
+                 style="width: 1.125rem; height: 1.125rem;margin-top: 13px">
+                <path d="M9.9 19.7L17 12 9.9 4.4c-.7-.7-1.7-.2-1.7.7v14c0 .8 1 1.3 1.7.6z"/>
+            </svg>
+        </div>
+
+        <div class="autocomplete2"
+             style="margin-right: 10px">
+            <label for="arv2"
+                   class="col-form-label">도착지</label>
+            <input class="border-right rounded" id="arv2"
+                   type="text"
+                   name="arv" placeholder="도시 또는 공항">
+        </div>
+        <div class="form-group2" style="margin-right: 50px">
+            <label for="depTime2"
+                   class="col-form-label">가는날</label><br/>
+            <input class="border-right rounded"
+                   id="depTime2"
+                   type="date" style="width: 300px">
+        </div>
+    </div>
+
+    <div class="delete">
+        <input type="button" value="삭제" onclick="remove_item(this)">
+        <br/>
+        <label class="col-form-label">&nbsp;</label>
+        <button type="button" onclick="remove_item(this)">
+        <svg id="delete" xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24" width="18" height="18"
+             style="width: 1.125rem; height: 1.125rem; margin-top: 13px">
+            <path d="M12 9.172l4.243-4.243a2 2 0 1 1 2.828 2.828L14.828 12l4.243 4.243a2 2 0 1 1-2.828 2.828L12 14.828l-4.243 4.243a2 2 0 1 1-2.828-2.828L9.172 12 4.929 7.757A2 2 0 1 1 7.757 4.93L12 9.172z"/>
+        </svg>
+        </button>
+    </div>
+</div>
+
+<div id="field">
+
+
+</div>
+
+<input type="button" value=" 추가 " onclick="add_item()">
+</body>
+</html>
