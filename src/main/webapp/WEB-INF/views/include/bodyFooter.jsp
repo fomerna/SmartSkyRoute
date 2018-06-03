@@ -1,40 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<style type="text/css">
 
-<section class="cid-qSQunmbHqF" id="footer2-e" style="padding-bottom: 0px">
+    @media (min-width: 768px) {
+        #footcontainer {
+            width: 1200px;
+        }
+    }
 
-    <div class="container">
-        <div class="media-container-row content mbr-white">
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+    @media (min-width: 992px) {
+        #footcontainer {
+            width: 1200px;
+
+            margin-left: 290px;
+        }
+    }
+
+</style>
+
+<section class="cid-qTuSjj1j6h" id="footer1-l">
+
+    <div class="container justify-content-md-center" id="footcontainer">
+        <div class="media-container-row content text-white">
+            <div class="col-12 col-md-3" style="margin-right: 91px;">
+                <div class="media-wrap">
+                    <img src="/resources/img/SSR.PNG" alt="SSR"
+                         style="width: 250px; height: 100px;">
+                </div>
+            </div>
+            <div class="col-12 col-md-2 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Address
+                </h5>
                 <p class="mbr-text">
-                    <strong>Address</strong>
-                    <br>
-                    <br>1234 Street Name
+                    1234 Street Name
                     <br>City, AA 99999
-                    <br>
-                    <br>
-                    <br><strong>Contacts</strong>
-                    <br>
-                    <br>Email: support@mobirise.com
+                </p>
+            </div>
+            <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Contacts
+                </h5>
+                <p class="mbr-text">
+                    Email: support@mobirise.com
                     <br>Phone: +1 (0) 000 0000 001
                     <br>Fax: +1 (0) 000 0000 002
                 </p>
             </div>
             <div class="col-12 col-md-3 mbr-fonts-style display-7">
+                <h5 class="pb-3">
+                    Links
+                </h5>
                 <p class="mbr-text">
-                    <strong>Links</strong>
-                    <br>
-                    <br><a class="text-primary" href="https://mobirise.com/">Website builder</a>
-                    <br><a class="text-primary" href="https://mobirise.com/mobirise-free-win.zip">Download for Windows</a>
-                    <br><a class="text-primary" href="https: //mobirise.com/mobirise-free-mac.zip">Download for Mac</a>
-                    <br>
-                    <br><strong>Feedback</strong>
-                    <br>
-                    <br>Please send us your ideas, bug reports, suggestions! Any feedback would be appreciated.
+                    <a class="text-primary" href="https://mobirise.com/">Website
+                        builder</a>
+                    <br><a class="text-primary"
+                           href="https://mobirise.com/mobirise-free-win.zip">Download
+                    for Windows</a>
+                    <br><a class="text-primary"
+                           href="https://mobirise.com/mobirise-free-mac.zip">Download
+                    for Mac</a>
                 </p>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="google-map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0Dx_boXQiwvdz8sJHoYeZNVTdoWONYkU&amp;q=place_id:ChIJn6wOs6lZwokRLKy1iqRcoKw" allowfullscreen=""></iframe></div>
             </div>
         </div>
         <div class="footer-lower">
@@ -52,35 +78,31 @@
                 <div class="col-md-6">
                     <div class="social-list align-right">
                         <div class="soc-item">
-                            <a href="https://twitter.com/mobirise" target="_blank">
-                                <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                            <a href="https://github.com/fomerna/SmartSkyRoute"
+                               target="_blank">
+                                <span class="socicon-github socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
                         <div class="soc-item">
-                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
+                            <a href="https://www.facebook.com/pages/Mobirise/1616226671953247"
+                               target="_blank">
                                 <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
                         <div class="soc-item">
-                            <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                            <a href="https://www.youtube.com/c/mobirise"
+                               target="_blank">
                                 <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
                         <div class="soc-item">
-                            <a href="https://instagram.com/mobirise" target="_blank">
+                            <a href="https://instagram.com/mobirise"
+                               target="_blank">
                                 <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
                             </a>
                         </div>
-                        <div class="soc-item">
-                            <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
-                                <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
-                        <div class="soc-item">
-                            <a href="https://www.behance.net/Mobirise" target="_blank">
-                                <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
-                            </a>
-                        </div>
+
+
                     </div>
                 </div>
             </div>

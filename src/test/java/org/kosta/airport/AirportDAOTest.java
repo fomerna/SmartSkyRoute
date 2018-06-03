@@ -1,6 +1,7 @@
 
 package org.kosta.airport;
 
+import org.kosta.domain.airport.AirportVO;
 import org.kosta.persistence.airport.AirportDAO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +32,30 @@ public class AirportDAOTest {
         System.out.println(airportDAO.readLat("LHR"));
     }
 
+    @Test
+    public void testIn() throws Exception{
+
+        List<String> code_list = new ArrayList<>();
+
+        code_list.add("NRT");
+        code_list.add("ICN");
+        code_list.add("FCO");
+        code_list.add("CDG");
+        code_list.add("PVG");
+        code_list.add("PEK");
+
+        HashMap<String,Object> param= new HashMap<>();
+
+        param.put("code_list", code_list);
+
+        List<AirportVO> airportVOList;
+        airportVOList=airportDAO.selectAirport2(param);
+
+        logger.info(airportVOList.get(0).getAirportCode());
+
+
+
+    }
 
     @Test
     public void testReadAll() throws Exception {
