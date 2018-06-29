@@ -20,6 +20,7 @@
     <mvc:resources mapping="/assets/**" location="/resources/assets/"/>
     <mvc:resources mapping="/bootstrap/**" location="/resources/bootstrap/"/>
 
+
     <!--viewResolver 설정-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

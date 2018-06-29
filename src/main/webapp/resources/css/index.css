@@ -22,15 +22,28 @@
     -webkit-font-smoothing: antialiased;
 }
 
-#country {
+#country0 {
     font-size: 1rem;
 }
 
-#country:after {
+#country0:after {
     content: "";
     display: block;
     height: 1px;
     width: 450px;
+    margin: 3px 0;
+    background: #fff;
+}
+
+#country1 {
+    font-size: 1rem;
+}
+
+#country1:after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 300px;
     margin: 3px 0;
     background: #fff;
 }
@@ -40,19 +53,6 @@
 }
 
 #country2:after {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 300px;
-    margin: 3px 0;
-    background: #fff;
-}
-
-#country3 {
-    font-size: 1rem;
-}
-
-#country3:after {
     content: "";
     display: block;
     height: 1px;
@@ -71,7 +71,6 @@
 .img-cont > img {
 
     transition: transform .2s; /* Animation */
-
 }
 
 .img-cont > img:hover {
@@ -267,4 +266,21 @@
         border-right-width: 14px;
         border-left-width: 0;
     }
+
 }
+
+#dealBtn{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    margin-bottom: 10px;
+}
+
+#dealBtn >span{
+    color: white;
+}
+
+#dealFormDiv > h4{
+    margin: 0 0;
+}
+

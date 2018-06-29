@@ -12,35 +12,33 @@
         WHERE airportCode = #{airportCode}
     </select>
 
-    <select id="selectAirport2" resultType="AirportVO"
-            parameterType="java.util.HashMap">
-        SELECT *
-        FROM
-        airport
-        <choose>
-            <when test="code_list.size !=0">
-                WHERE airportCode IN
-                <foreach collection="code_list" item="item" index="index"
-                         separator="," open="(" close=")">
-                    #{item}
-                </foreach>
-                order by field(airportCode)
-            </when>
-        </choose>
-    </select>
-
     <select id="readLat" resultType="double">
         SELECT lat
         FROM
-            airport
+        airport
         WHERE airportCode = #{airportCode}
     </select>
 
     <select id="readLon" resultType="double">
         SELECT lon
         FROM
-            airport
+        airport
         WHERE airportCode = #{airportCode}
     </select>
 
+    <select id="selectAirport2" resultType="AirportVO" parameterType="java.util.HashMap">
+        select * from airport
+        <choose>
+            <when test="code_list.size !=0">
+                where airportcode IN
+                <foreach collection="code_list" item="item" index="index" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+                order by field(airportcode,
+                <foreach collection="code_list" item="item" index="index" separator="," open="" close=")">
+                    #{item}
+                </foreach>
+            </when>
+        </choose>
+    </select>
 </mapper>

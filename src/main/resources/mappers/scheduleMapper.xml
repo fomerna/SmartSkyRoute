@@ -12,5 +12,101 @@
         WHERE dep = #{dep} AND arv = #{arv}
     </select>
 
+    <select id="selectDepday" parameterType="ScheduleVO" resultType="ScheduleVO">
+        SELECT *
+        FROM
+        schedule
+        WHERE dep = #{dep} AND arv = #{arv} AND depDay=#{depDay} order by price asc LIMIT 0,5
+    </select>
 
+    <select id="selectArvday" parameterType="ScheduleVO" resultType="ScheduleVO">
+        SELECT *
+        FROM
+        schedule
+        WHERE dep = #{dep} AND arv = #{arv} AND arvDay =#{arvDay} order by price asc LIMIT 0,5
+    </select>
+
+    <select id="selectPriceDepday" parameterType="ScheduleVO" resultType="ScheduleVO">
+        select * from schedule where dep=#{dep} and arv=#{arv} and depDay=#{depDay}  order by price asc LIMIT 0,1
+    </select>
+
+    <select id="selectPriceArvday" parameterType="ScheduleVO" resultType="ScheduleVO">
+        select * from schedule where dep=#{dep} and arv=#{arv} and arvDay=#{arvDay}  order by price asc LIMIT 0,1;
+    </select>
+
+    <select id="selectReRoute" parameterType="java.util.HashMap" resultType="ScheduleVO">
+        select * from schedule
+
+        <if test="col == '가격'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by price
+
+        </if>
+        <if test="col == '출발시간'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by depTime
+        </if>
+        <if test="col == '도착시간'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by  arvTime
+        </if>
+        <if test="col=='소요시간'">
+            ,(select schedule.sno,(SUBSTR(arvTime,1,2)-SUBSTR(depTime,1,2))*60 +(SUBSTR(arvTime,4,5)-SUBSTR(depTime,4,5)+60) as
+            hour  from schedule where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}) as tempTable where schedule.sno = tempTable.sno
+            order by hour
+        </if>
+        <if test="order == '오름차순'">
+            asc
+        </if>
+        <if test="order == '내림차순'">
+            desc
+        </if>
+        <if test="col == '출발시간'">
+            ,price ASC
+        </if>
+        <if test="col == '도착시간'">
+            ,price ASC
+        </if>
+        <if test="col == '소요시간'">
+            ,price ASC
+        </if>
+
+        LIMIT 0,5;
+    </select>
+
+    <select id="selectReRouteMore" parameterType="java.util.HashMap" resultType="ScheduleVO">
+        select * from schedule
+
+        <if test="col == '가격'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by price
+
+        </if>
+        <if test="col == '출발시간'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by depTime
+        </if>
+        <if test="col == '도착시간'">
+            where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}  order by  arvTime
+        </if>
+        <if test="col=='소요시간'">
+            ,(select schedule.sno,(SUBSTR(arvTime,1,2)-SUBSTR(depTime,1,2))*60 +(SUBSTR(arvTime,4,5)-SUBSTR(depTime,4,5)+60) as
+            hour  from schedule where dep=#{dep} AND  arv=#{arv} AND depDay=#{depDay}) as tempTable where schedule.sno = tempTable.sno
+            order by hour
+        </if>
+        <if test="order == '오름차순'">
+            asc
+        </if>
+        <if test="order == '내림차순'">
+            desc
+        </if>
+        <if test="col == '출발시간'">
+            ,price ASC
+        </if>
+        <if test="col == '도착시간'">
+            ,price ASC
+        </if>
+        <if test="col == '소요시간'">
+            ,price ASC
+        </if>
+        LIMIT #{str_input},5
+    </select>
+    <select id="routeSno" parameterType="int" resultType="ScheduleVO">
+        SELECT * From schedule where sno= #{sno}
+    </select>
 </mapper>

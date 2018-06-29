@@ -2,10 +2,12 @@ package org.kosta.schedule;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.kosta.domain.schedule.ScheduleVO;
-import org.kosta.persistence.schedule.ScheduleDAO;
-import org.kosta.service.airport.AirportService;
-import org.kosta.service.schedule.ScheduleService;
+import org.kosta.domain.AirportVO;
+import org.kosta.domain.ScheduleVO;
+import org.kosta.etc.TransDate;
+import org.kosta.persistence.ScheduleDAO;
+import org.kosta.service.AirportService;
+import org.kosta.service.ScheduleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-config/applicationContext.xml"})
@@ -30,30 +33,29 @@ public class ScheduleDAOTest {
 
 
     @Test
-    public void testReadAll() throws Exception {
+    public void test() throws Exception {
 
-        ScheduleVO vo = new ScheduleVO();
-        List<List<ScheduleVO>> result = new ArrayList<>();
-        airportService.route2("PVG", "MAD", "PEK", "ICN");
+        List<AirportVO> airportList = new ArrayList<>();
 
+        TransDate transDate = new TransDate();
+        List<List<ScheduleVO>> round = new ArrayList<>();
+        ScheduleVO scheduleVO = new ScheduleVO();
 
-        vo.setDep(airportService.route2("PVG", "MAD", "PEK", "ICN").get(0));
-        vo.setArv(airportService.route2("PVG", "MAD", "PEK", "ICN").get(1));
-        logger.info(scheduleService.route2(vo).toString());
+        AirportVO airportVO = new AirportVO();
+        AirportVO airportVO2 = new AirportVO();
 
-        result.add(scheduleService.route2(vo));
+        airportVO.setAirportCode("ICN");
+        airportList.add(airportVO);
+        airportVO2.setAirportCode("NRT");
+        airportList.add(airportVO2);
 
-       vo.setDep(airportService.route2("PVG", "MAD", "PEK", "ICN").get(1));
-        vo.setArv(airportService.route2("PVG", "MAD", "PEK", "ICN").get(2));
-
-        result.add(scheduleService.route2(vo));
-
-        vo.setDep(airportService.route2("PVG", "MAD", "PEK", "ICN").get(2));
-        vo.setArv(airportService.route2("PVG", "MAD", "PEK", "ICN").get(3));
-
-        result.add(scheduleService.route2(vo));
-        logger.info(result.toString());
+        String depDay="2018-07-01";
+        String arvDay="2018-07-05";
 
 
+
+
+
+        logger.info(scheduleService.round(airportService.route(airportList),depDay,arvDay).toString());
     }
 }

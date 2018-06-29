@@ -5,8 +5,8 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias type="org.kosta.domain.airport.AirportVO" alias="AirportVO"/>
-        <typeAlias type="org.kosta.domain.schedule.ScheduleVO" alias="ScheduleVO"/>
+        <typeAlias type="org.kosta.domain.AirportVO" alias="AirportVO"/>
+        <typeAlias type="org.kosta.domain.ScheduleVO" alias="ScheduleVO"/>
     </typeAliases>
 
 </configuration>

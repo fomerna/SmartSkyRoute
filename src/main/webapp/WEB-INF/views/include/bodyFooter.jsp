@@ -1,24 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<style type="text/css">
 
-    @media (min-width: 768px) {
-        #footcontainer {
-            width: 1200px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        #footcontainer {
-            width: 1200px;
-
-            margin-left: 290px;
-        }
-    }
-
-</style>
-
-<section class="cid-qTuSjj1j6h" id="footer1-l">
+<section class="cid-qTuSjj1j6h" id="footer1-l" style="margin-top: 50px">
 
     <div class="container justify-content-md-center" id="footcontainer">
         <div class="media-container-row content text-white">

@@ -1,50 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Vanilla JavaScript autoComplete</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>Login Demo - Kakao JavaScript SDK</title>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-    <link rel="stylesheet" href="auto-complete.css">
 </head>
 <body>
-
-
-<form  class="pure-form" style="margin:30px 0 40px">
-    <input id="advanced-demo" autofocus type="text" name="q"
-           placeholder="Country or language code ..."
-           style="width:100%;max-width:600px;outline:0">
-</form>
-<script src="auto-complete.min.js"></script>
-
-<script>
-
-    var airport = new autoComplete({
-        selector: '#advanced-demo',
-        minChars: 1,
-        source: function (term, suggest) {
-            term = term.toLowerCase();
-            var choices = [['인천', 'ICN'], ['베이징', 'PEK'], ['상하이', 'PVG'], ['도쿄', 'NRT'], ['런던', 'LHR'], ['파리', 'CDG'], ['로마', 'FCO'], ['밀라노', 'MXP'], ['마드리드', 'MAD'], ['바르셀로나', 'BCN']];
-            var suggestions = [];
-
-            for (i = 0; i < choices.length; i++)
-                if (~(choices[i][0] + ' ' + choices[i][1]).toLowerCase().indexOf(term)) suggestions.push(choices[i]);
-            suggest(suggestions);
+<a id="kakao-login-btn"></a>
+<a href="http://developers.kakao.com/logout"></a>
+<script type='text/javascript'>
+    //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('bdc9ca3249957a55ae066538ed2113ba');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+        container: '#kakao-login-btn',
+        success: function(authObj) {
+            alert(JSON.stringify(authObj));
         },
-        renderItem: function (item, search) {
-            search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&amp;');
-            var re = new RegExp("(" + search.split(' ').join('|') + ")", "gi");
-            return '<div class="autocomplete-suggestion" data-langname="' + item[0] + '" data-lang="' + item[1] + '" data-val="' + search + '"> ' + item[0].replace(re, "<b>$1</b>") + '</div>';
-        },
-        onSelect: function (e, term, item) {
-            console.log('Item "' + item.getAttribute('data-langname') + ' (' + item.getAttribute('data-lang') + ')" selected by ' + (e.type == 'keydown' ? 'pressing enter' : 'mouse click') + '.');
-            document.getElementById('advanced-demo').value = item.getAttribute('data-langname') + ' (' + item.getAttribute('data-lang') + ')';
+        fail: function(err) {
+            alert(JSON.stringify(err));
         }
     });
-
-
+    //]]>
 </script>
-
-
 
 </body>
 </html>

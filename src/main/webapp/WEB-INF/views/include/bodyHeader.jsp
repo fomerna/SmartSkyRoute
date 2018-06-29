@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ include file="head.jsp" %>
-<script src="/resources/auto-complete.js"></script>
-<script src="/resources/bodyHeader.js"></script>
-<link rel="stylesheet" href="/resources/css/auto-complete.css">
 
 
-<%@ include file="footer.jsp" %>
+<%------------------- 자동완성 플러그인--------------------%>
+<script src="/resources/js/tether.min.js"></script>
+<script src="/resources/js/typeahead.bundle.min.js"></script>
 
-<%--=================상단 Nav===================--%>
+<body>
 
+<%------------------- 상단 Nav--------------------%>
 <section class="menu cid-qSQttKSGm1" once="menu" id="menu2-9">
 
 
@@ -22,7 +21,7 @@
         <div class="menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-logo">
-                    <a href="">
+                    <a id="logo">
                         <img src="/resources/img/SSR.PNG" alt="SmartSkyRoute"
                              style="height: 3.8rem;">
                     </a>
@@ -33,26 +32,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                 <li class="nav-item">
-                    <a class="nav-link link text-warning display-4"
-                       href="indexEng.jsp"><span
-                            class="mbrib-globe-2 mbr-iconfont mbr-iconfont-btn"></span>
+                    <a class="nav-link link text-warning display-4">
+                        <span class="mbrib-globe-2 mbr-iconfont mbr-iconfont-btn"></span>
                         Languages
                     </a>
                 </li>
             </ul>
-            <div class="navbar-buttons mbr-section-btn"><a
-                    class="btn btn-sm btn-primary-outline display-4"
-                    href="">
+            <div class="navbar-buttons mbr-section-btn">
+                <a class="btn btn-sm btn-primary-outline display-4"
+                   href=""> ko-KRW</a>
 
-                ko-KRW</a> <a class="btn btn-sm btn-primary-outline display-4"
-                              href="">
 
-                로그인</a></div>
+            </div>
         </div>
     </nav>
 </section>
 
-<%--====================검색창============================--%>
+
+<%------------------- 검색창 --------------------%>
 
 <section class="header1 cid-qSQtzmmY7v" id="header1-a">
 
@@ -64,16 +61,24 @@
     <div class="container">
         <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
-                    <span class="nav-link active" id="pills-home-tab"
-                          data-toggle="pill" href="#pills-home" role="tab"
-                          aria-controls="pills-home"
-                          aria-selected="true"
-                          style="margin-right: 20px">왕복</span>
+    <span class="nav-link active" id="pills-home-tab"
+          data-toggle="pill" href="#pills-home" role="tab"
+          aria-controls="pills-home"
+          aria-selected="true"
+          style="margin-right: 20px">왕복</span>
             </li>
+
             <li class="nav-item">
-                    <span class="nav-link" id="pills-profile-tab"
-                          data-toggle="pill" href="#pills-profile" role="tab"
-                          aria-controls="pills-profile" aria-selected="false">다구간</span>
+    <span class="nav-link" id="multiCityInput"
+          data-toggle="pill" href="#multi-city" role="tab"
+          aria-controls="pills-profile" aria-selected="false"
+          style="margin-right: 20px">다구간</span>
+            </li>
+
+            <li class="nav-item">
+    <span class="nav-link" id="lowestInput"
+          data-toggle="pill" href="#lowest" role="tab"
+          aria-controls="pills-profile" aria-selected="false">최저가</span>
             </li>
         </ul>
         <div class="tab-content" id="pills-tabContent">
@@ -81,24 +86,27 @@
             <%-- ===============왕복================ --%>
             <div class="tab-pane fade show active" id="pills-home"
                  role="tabpanel" aria-labelledby="pills-home-tab">
-                <form>
+                <form action="/round" method="post" name="baseForm"
+                      id="ScheduleVO">
                     <div class="row justify-content-md-center">
 
-                        <%-- 출발지 --%>
+                        <%--출발지--%>
                         <div class="autocomplete">
-                            <label for="dep"
+                            <label for="d1"
                                    class="col-form-label">출발지</label>
-                            <input class="rounded-left" id="dep" type="text"
-                                   name="dep" placeholder="도시 또는 공항">
+                            <input class="rounded-left typeahead" id="d1"
+                                   type="text"
+                                   name="dep" placeholder="도시 또는 공항"
+                                   value="ICN">
                         </div>
 
-                        <%-- Swap 버튼 --%>
+                        <%--Swap 버튼--%>
                         <div class="swapWrapper">
                             <br/>
-                            <label for="dep"
+                            <label for="swap"
                                    class="col-form-label"></label><br/>
                             <button type="button" id="swap" class="border-0"
-                                    style="background-color: #f1f1f1; height: 48px;">
+                                    style="background-color: #f1f1f1; height: 46px;">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 24 24" width="18" height="17"
                                      style="width: 1.125rem;; ">
@@ -107,29 +115,35 @@
                             </button>
                         </div>
 
-                        <%-- 도착지 --%>
+                        <%--도착지--%>
                         <div class="autocomplete">
-                            <label for="arv"
+                            <label for="a1"
                                    class="col-form-label">도착지</label>
-                            <input class="border-right border-left " id="arv"
+                            <input class="border-right border-left typeahead"
+                                   id="a1"
                                    type="text"
-                                   name="arv" placeholder="도시 또는 공항">
+                                   name="arv" placeholder="도시 또는 공항"
+                                   value="NRT">
                         </div>
 
-                        <%-- 가는날 --%>
+                        <%--가는날--%>
                         <div class="form-group">
-                            <label for="depTime"
+                            <label for="dTime"
                                    class="col-form-label">가는날</label>
-                            <input class="border-right " id="depTime"
-                                   type="date">
+                            <input class="border-right " id="dTime"
+                                   name="depDay"
+                                   type="date" value="2018-07-01"
+                                   onchange="search()">
                         </div>
 
-                        <%-- 오는날 --%>
+                        <%--오는날--%>
                         <div class="form-group">
-                            <label for="arvTime"
+                            <label for="aTime"
                                    class="col-form-label">오는날</label>
-                            <input class="border-right rounded" id="arvTime"
-                                   type="date">
+                            <input class="border-right rounded-right" id="aTime"
+                                   name="arvDay"
+                                   type="date" value="2018-07-05"
+                                   onchange="search()">
                         </div>
                     </div>
 
@@ -139,133 +153,202 @@
                             <span class="mbrib-search mbr-iconfont mbr-iconfont-btn"></span>
                             항공권 검색
                         </button>
+
                     </div>
                 </form>
             </div>
 
             <%-- ===================다구간================== --%>
-            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+            <div class="tab-pane fade justify-content-md-center"
+                 id="multi-city" role="tabpanel"
                  aria-labelledby="pills-profile-tab">
 
-                <form>
-                    <div class="row justify-content-md-center" id="multi-input">
+                <form name="baseForm" action="/" method="post"
+                      id="ScheduleVO">
+                    <div class="row justify-content-md-center" id="input">
+                        <ul class="list-group-flush">
+                            <input type="hidden" name="count" value="0">
+                            <li style="list-style-type: none;">
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">출발지</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="text"
+                                                   class="rounded-right typeahead"
+                                                   name="dep" id="dep"
+                                                   value="ICN"
+                                                   style="width: 300px;"></div>
+                                    </div>
+                                </div>
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">가는날</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="date"
+                                                   class="rounded-right "
+                                                   name="depDay"
+                                                   id="depDay"
+                                                   value="2018-07-01"
+                                                   style="width: 300px"></div>
+                                    </div>
+                                </div>
+                            </li>
 
-                        <%-- 출발지 --%>
-                        <div class="autocomplete2">
-                            <label for="multi-dep"
-                                   class="col-form-label">출발지</label>
-                            <input class="rounded" id="multi-dep"
-                                   type="text"
-                                   name="multi-dep" placeholder="도시 또는 공항">
-                        </div>
 
-                        <%-- 화살표 --%>
-                        <div class="array">
-                            <br/>
-                            <label
-                                    class="col-form-label"></label><br/>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 24 24" width="25" height="25"
-                                 style="width: 1.125rem; height: 1.125rem;margin-top: 13px;margin-left: 5px;margin-right: 5px">
-                                <path d="M9.9 19.7L17 12 9.9 4.4c-.7-.7-1.7-.2-1.7.7v14c0 .8 1 1.3 1.7.6z"></path>
-                            </svg>
-                        </div>
-
-                        <%-- 도착지 --%>
-                        <div class="autocomplete2"
-                             style="margin-right: 30px">
-                            <label for="arv"
-                                   class="col-form-label">도착지</label>
-                            <input class="border rounded" id="multi-arv"
-                                   type="text"
-                                   name="multi-arv" placeholder="도시 또는 공항">
-                        </div>
-
-                            <%-- 가는날 --%>
-                        <div class="form-group2" style="margin-right: 30px">
-                            <label for="multi-time"
-                                   class="col-form-label">가는날</label><br/>
-                            <input class="border rounded"
-                                   id="multi-time"
-                                   type="date" style="width: 300px">
-                        </div>
-
-                        <%-- 삭제 공간 --%>
-                        <div class="delete">
-                            <br/>
-                            <label
-                                    class="col-form-label"></label><br/>
-                            <svg id="delete" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 24 24" width="18" height="18"
-                                 style="width: 1.125rem; height: 1.125rem; margin-top: 13px">
-                            </svg>
-                        </div>
-
+                            <li style="list-style-type: none"
+                                id="addedFormDiv"></li>
+                            <li style="list-style-type: none">
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">도착지</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="text"
+                                                   class="rounded-right typeahead"
+                                                   name="arv" value="LHR"
+                                                   id="arv"
+                                                   style="width: 300px;"></div>
+                                    </div>
+                                </div>
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">도착일</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="date"
+                                                   class="rounded-right"
+                                                   name="arvDay"
+                                                   id="arvDay"
+                                                   value="2018-07-05"
+                                                   style="width: 300px"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-
-                    <%-- 추가 & 검색 버튼 --%>
-                    <div class="mbr-section-btn align-center"
-                         style="margin-top: 30px">
-                        <button type="button"
-                                class="btn btn-md btn-primary display-4 rounded"
-                                id="more" onclick="add_item()">
+                    <div class="row justify-content-md-center" id="button_list">
+                        <button type="Button" value="추가" onclick="addForm()"
+                                class="btn btn-md btn-primary display-4 rounded">
                             <span class="mbri-plus mbr-iconfont mbr-iconfont-btn"></span>
-                            구간 추가
+                            경유지 추가
                         </button>
 
-                        <button class="btn btn-md btn-primary display-4 rounded" type="button">
+                        <button type="Button" value="삭제" onclick="delForm()"
+                                class="btn btn-md btn-primary display-4 rounded">
+                            <span class="mbri-close mbr-iconfont mbr-iconfont-btn"></span>
+                            경유지 삭제
+                        </button>
+
+                        <button class="btn btn-md btn-warning display-4 rounded"
+                                type="submit">
                             <span class="mbrib-search mbr-iconfont mbr-iconfont-btn"></span>
                             항공권 검색
                         </button>
                     </div>
                 </form>
             </div>
+
+            <%-- ===================최저가================== --%>
+            <div class="tab-pane fade justify-content-md-center"
+                 id="lowest" role="tabpanel"
+                 aria-labelledby="pills-profile-tab">
+
+                <form name="baseForm" action="/LowestPrice" method="post"
+                      id="">
+                    <div class="row justify-content-md-center" id="input2">
+                        <ul class="list-group-flush" style="padding-left: 0;">
+                            <input type="hidden" name="count" value="0">
+                            <li style="list-style-type: none;">
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">출발지</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="text"
+                                                   class="rounded-right typeahead"
+                                                   name="dep" id="dep2"
+                                                   value="ICN"
+                                                   style="width: 300px;"></div>
+                                    </div>
+                                </div>
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">가는날</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="date"
+                                                   class="rounded-right"
+                                                   name="depDay"
+                                                   id="depDay2"
+                                                   style="width: 300px"></div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+                            <li style="list-style-type: none"
+                                id="addedFormDiv2"></li>
+                            <li style="list-style-type: none">
+                                <div class="d-inline-block">
+                                    <div class="input-group input-group-sm mb-3 ">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">도착지</span>
+                                        </div>
+                                        <div class=" d-inline-block">
+                                            <input type="text"
+                                                   class="rounded-right typeahead"
+                                                   name="arv" value="LHR"
+                                                   style="width: 300px;"></div>
+                                    </div>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="row justify-content-md-center" id="button_list">
+                        <button type="Button" value="추가" onclick="addForm2()"
+                                class="btn btn-md btn-primary display-4 rounded">
+                            <span class="mbri-plus mbr-iconfont mbr-iconfont-btn"></span>
+                            경유지 추가
+                        </button>
+
+                        <button type="Button" value="삭제" onclick="delForm2()"
+                                class="btn btn-md btn-primary display-4 rounded">
+                            <span class="mbri-close mbr-iconfont mbr-iconfont-btn"></span>
+                            경유지 삭제
+                        </button>
+
+                        <button class="btn btn-md btn-warning display-4 rounded"
+                                type="submit">
+                            <span class="mbrib-search mbr-iconfont mbr-iconfont-btn"></span>
+                            항공권 검색
+                        </button>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
 
 </section>
 
+</body>
 
-<%--===============경유지 추가===================--%>
-<div id="pre_set" style="display:none" class="justify-content-md-center">
-    <div class="row justify-content-md-center" id="multi-input2">
+<%------------------- bodyHeader.js--------------------%>
+<script src="/resources/js/bodyHeader.js"></script>
 
-        <%-- 경유지 --%>
-        <div class="autocomplete3" style="margin-right: 30px">
-            <label for="s1"
-                   class="col-form-label">경유지</label>
-            <input class="rounded" id="s1" name="s1"
-                   type="text"
-                   placeholder="도시 또는 공항">
-        </div>
+<script type="text/javascript">
+    $("#logo").click(function () {
+        location.href = " http://localhost:8080/";
+    });
 
-            <%-- 가는날 --%>
-        <div class="form-group3" style="margin-right: 30px">
-            <label for="s1-time"
-                   class="col-form-label">가는날</label><br/>
-            <input class="border-right rounded"
-                   id="s1-time"
-                   type="date" style="width: 300px">
-        </div>
-
-            <%-- 삭제 --%>
-        <div class="delete">
-            <br/>
-            <label
-                    class="col-form-label"></label><br/>
-            <svg id="delete" xmlns="http://www.w3.org/2000/svg"
-                 onclick="remove_item(this)"
-                 viewBox="0 0 24 24" width="18" height="18"
-                 style="width: 1.125rem; height: 1.125rem; margin-top: 13px;">
-                <path d="M12 9.172l4.243-4.243a2 2 0 1 1 2.828 2.828L14.828 12l4.243 4.243a2 2 0 1 1-2.828 2.828L12 14.828l-4.243 4.243a2 2 0 1 1-2.828-2.828L9.172 12 4.929 7.757A2 2 0 1 1 7.757 4.93L12 9.172z"></path>
-            </svg>
-        </div>
-    </div>
-</div>
-
-
-
-<script src="/resources/bodyHeader.js"></script>
-
-
+</script>
 

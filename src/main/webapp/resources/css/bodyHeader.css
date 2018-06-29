@@ -1,30 +1,23 @@
 #navbarSupportedContent {
-
     padding-right: 333px;
 }
 
 .menu-logo {
-
     padding-left: 240px;
-
 }
 
-#dep {
-
+#d1 {
     height: 48px;
-
 }
 
-#arv {
-
-    height: 48px;
-
+#a1 {
+    height: 47px;
 }
 
 .swapWrapper svg {
-     vertical-align: middle;
-     fill: #00b2d6;
- }
+    vertical-align: middle;
+    fill: #00b2d6;
+}
 
 .array svg {
     vertical-align: middle;
@@ -55,15 +48,6 @@ body {
     width: 310px;
 }
 
-.autocomplete2 {
-
-    width: 300px;
-}
-
-.autocomplete3{
-    width: 628px;
-}
-
 .form-group2 {
     width: 300px !important;
 }
@@ -75,7 +59,6 @@ input {
     font-size: 16px;
 }
 
-
 input[type=text] {
     background-color: #f1f1f1;
     width: 100%;
@@ -86,36 +69,11 @@ input[type=submit] {
     color: #fff;
 }
 
-.autocomplete-items {
-    position: absolute !important;
-    border: 1px solid #d4d4d4;
-    border-bottom: none;
-    border-top: none;
-    z-index: 99 !important;
-    /*position the autocomplete items to be the same width as the container:*/
-    left: 0 !important;
-    right: 0 !important;
-}
-
-.autocomplete-items div {
-    padding: 10px;
-    cursor: pointer !important;;
-    background-color: #fff;
-    border-bottom: 1px solid #d4d4d4;
-}
-
-.autocomplete-items div:hover {
-    /*when hovering an item:*/
-    background-color: #e9e9e9;
-}
-
-.autocomplete-active {
-    /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important;
-    color: #ffffff;
-}
-
 .autocomplete {
+    height: 46px !important;
+}
+
+.autocomplete2 {
     height: 46px !important;
 }
 
@@ -123,12 +81,28 @@ input::placeholder {
     font-style: italic;
 }
 
-.col-form-label{
+.col-form-label {
     color: white;
 }
 
-.nav-tabs .nav-link.active{
+.nav-tabs .nav-link.active {
     color: #ffffff;
     background-color: #5bc0d1;
     border-color: #dee2e6 #dee2e6 #fff
+}
+
+.nav-link {
+    color: white;
+}
+
+#input > ul{
+    padding-left: 0;
+}
+
+#dTime{
+    height: 46px;
+}
+
+#aTime{
+    height: 46px;
 }
