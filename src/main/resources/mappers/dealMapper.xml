@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosta.mappers.DealMapper">
+    <select id="deal" resultType="ScheduleVO" parameterType="ScheduleVO">
+        SELECT
+            schedule.sno,
+            schedule.dep,
+            schedule.depDay,
+            schedule.depTime,
+            schedule.arv,
+            schedule.arvDay,
+            schedule.arvTime,
+            schedule.airlineCode,
+            schedule.fno,
+            schedule.price
+        FROM schedule, (
+                           SELECT
+                               min(price) AS low_price,
+                               arv,
+                               sno
+                           FROM schedule
+                           WHERE dep = #{dep} AND depDay = #{depDay}
+                           GROUP BY arv
+                           ORDER BY low_price
+                           ASC
+                           LIMIT 0, 3) AS temp
+        WHERE schedule.sno = temp.sno;
+    </select>
+
+    <select id="selectAirportCode" resultType="AirportVO">
+        SELECT *
+        FROM
+        airport
+        WHERE airportCode = #{airportCode}
+    </select>
+</mapper>
