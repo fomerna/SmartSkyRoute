@@ -9,5 +9,9 @@
 <h2>개발환경</h2>
 
 &bull; 
-Spring 4.3.2.RELEASE & Mybatis & MySQL 5.7 & Bootstrap 4.1 & JSP
+Spring 4.3.2.RELEASE
+&bull; 
+Mybatis & MySQL 5.7
+&bull; 
+Bootstrap 4.1 & JSP & Ajax
 
