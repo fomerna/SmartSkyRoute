@@ -2,11 +2,11 @@
  Smart Sky Route Project
 
 
-<h2>프로젝트 설명</h2>
+<h3>프로젝트 설명</h3>
 
+<h3>기능</h3>
 
-
-<h2>개발환경</h2>
+<h3>개발환경</h3>
 
 &bull; 
 Spring 4.3.2.RELEASE
@@ -17,3 +17,6 @@ Mybatis & MySQL 5.7
 &bull; 
 Bootstrap 4.1 & JSP & Ajax
 <br>
+
+
+<h3>비고</h3>
