@@ -10,11 +10,10 @@
 
 &bull; 
 Spring 4.3.2.RELEASE
-&nbsp
+<br>
 &bull; 
 Mybatis & MySQL 5.7
-&nbsp
+<br>
 &bull; 
 Bootstrap 4.1 & JSP & Ajax
-&nbsp
-
+<br>
