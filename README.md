@@ -17,8 +17,10 @@
 
 &bull; 
 개발기간: 2018.05~2018.06 (1개월)
+<br>
 &bull; 
 개발인원:  2명
+<br>
 &bull; 
 Spring 4.3.2.RELEASE
 <br>
