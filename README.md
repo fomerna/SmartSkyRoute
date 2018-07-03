@@ -35,6 +35,9 @@ Spring 4.3.2.RELEASE
 Mybatis & MySQL 5.7
 <br>
 &bull; 
+Java & JavaScript & jQuery
+<br>
+&bull; 
 Bootstrap 4.1 & JSP & Ajax
 
 
