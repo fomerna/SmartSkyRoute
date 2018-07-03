@@ -13,15 +13,15 @@
 
 <h3>주요 기능</h3>
 &bull; 
-경유지 순서 고민없이 항공권 자동 검색
+경유지 순서 고민없이 항공권 자동 검색(최단거리 & 최저가 모두 검색)
 <br>
 &bull; 
 출발지, 날짜만 정하면 최저가 도시 상위 3곳 추천
 <br>
 &bull;
-최단거리 & 최저가 모두 검색 
-<h3>개발환경</h3>
+검색된 항공권을 캡쳐하여 PNG로 저장가능.
 
+<h3>개발환경</h3>
 &bull; 
 개발기간: 2018.05~2018.06 (1개월)
 <br>
@@ -36,8 +36,34 @@ Mybatis & MySQL 5.7
 <br>
 &bull; 
 Bootstrap 4.1 & JSP & Ajax
-<br>
 
+
+<h3>사용 API & 기술</h3>
+&bull; 
+Flight Stats Schedule API
+<br>
+&bull; 
+Flight Stats Airport API
+
+<br>
+&bull; 
+Dom-to-image.js (DOM 객체 Image 변환)
+
+<br>
+&bull; 
+FileSaver.js (Image를 PNG로 저장)
+
+<br>
+&bull; 
+Html2Canvas.js (Html을 Canvas로 변환)
+
+<br>
+&bull; 
+Numeral.js (통화 표시)
+
+<br>
+&bull; 
+TypeHead.js (자동 완성)
 
 <h3>비고</h3>
 
