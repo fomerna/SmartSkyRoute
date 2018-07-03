@@ -29,8 +29,13 @@ Ver 1.0
 &bull; 
 개발인원:  2명
 <br>
+
 &bull; 
-Spring 4.3.2.RELEASE
+Intelli J 2017.3.5 & Tomcat 9.0
+<br>
+
+&bull; 
+Spring 4.3.2.RELEASE & Gradle 4.7
 <br>
 &bull; 
 Mybatis & MySQL 5.7
