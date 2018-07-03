@@ -29,11 +29,11 @@ Ver 1.0
 &bull; 
 개발인원:  2명
 <br>
+<br>
 
 &bull; 
 Intelli J 2017.3.5 & Tomcat 9.0
 <br>
-
 &bull; 
 Spring 4.3.2.RELEASE & Gradle 4.7
 <br>
@@ -49,10 +49,10 @@ Bootstrap 4.1 & JSP & Ajax
 
 <h3>사용 API & 기술</h3>
 &bull; 
-Flight Stats Schedule API
+Flight Stats Schedule API (실제 항공 스케쥴을 가져옴)
 <br>
 &bull; 
-Flight Stats Airport API
+Flight Stats Airport API (각 나라의 공항을 가져옴)
 
 <br>
 &bull; 
