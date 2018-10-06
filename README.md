@@ -74,8 +74,9 @@ Numeral.js (통화 표시)
 &bull; 
 TypeHead.js (자동 완성)
 
-<h3>비고</h3>
+<h3>ScreenShot</h3>
 
 &bull; 
+<img src="https://imgur.com/a/VmWoCCa">
 
 &bull; 
