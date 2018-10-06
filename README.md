@@ -77,6 +77,8 @@ TypeHead.js (자동 완성)
 <h3>ScreenShot</h3>
 
 &bull; 
-<img src="https://imgur.com/a/VmWoCCa">
+![ssr](https://user-images.githubusercontent.com/25454098/46571173-50622500-c9ab-11e8-8e55-1b82a95493ac.png)
 
 &bull; 
+![main](https://user-images.githubusercontent.com/25454098/46571175-51935200-c9ab-11e8-8e47-8afb1a1e96a9.png)
+
